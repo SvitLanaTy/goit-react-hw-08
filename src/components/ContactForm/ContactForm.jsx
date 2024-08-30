@@ -1,47 +1,38 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
 
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
-const numberRegExp = /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+const numberRegExp = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
 
 const ContactValidationSchema = Yup.object().shape({
-  contactName: Yup.string()
+  name: Yup.string()
     .required("Required")
     .min(3, "Too Short!")
     .max(50, "Too Long!"),
-  contactNumber: Yup.string()
-    .matches(numberRegExp, "Requited format 'xxx-xx-xx'")
+  number: Yup.string()
+    .matches(numberRegExp, "Requited format 'xxx-xxx-xxxx'")
     .required("Required")
     .min(3, "Too Short!")
     .max(50, "Too Long!"),
 });
 
 const INITIAL_VALUES = {
-  contactName: "",
-  contactNumber: "",
+  name: "",
+  number: "",
 };
 
 const AddContactForm = () => {
   const dispatch = useDispatch();
 
-  const onAddContact = (newContact) => {
-    dispatch(addContact(newContact));
-  };
+  const handleSubmit = (formData, formActions) => {
+    console.log(formData);
 
-  const handleSubmit = (values, actions) => {
-    const contactObject = {
-      id: nanoid(),
-      name: values.contactName,
-      number: values.contactNumber,
-    };
-
-    onAddContact(contactObject);
-
-    actions.resetForm();
+    dispatch(addContact(formData));
+    formActions.resetForm();
+    formActions.setErrors({});
   };
 
   return (
@@ -54,20 +45,20 @@ const AddContactForm = () => {
         <Form className={css.form}>
           <label className={css.label}>
             <span>Name</span>
-            <Field type="text" name="contactName" />
+            <Field type="text" name="name" placeholder="Full Name" />
             <ErrorMessage
               className={css.errorText}
-              name="contactName"
+              name="name"
               component="span"
             />
           </label>
 
           <label className={css.label}>
             <span>Number</span>
-            <Field type="tel" name="contactNumber" />
+            <Field type="tel" name="number" placeholder="xxx-xxx-xxxx" />
             <ErrorMessage
               className={css.errorText}
-              name="contactNumber"
+              name="name"
               component="span"
             />
           </label>
