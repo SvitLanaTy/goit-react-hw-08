@@ -6,12 +6,12 @@ import ContactList from "./components/ContactList/ContactList";
 import css from "./components/Section/Section.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "./redux/contactsOps";
+import { fetchContacts } from "./redux/contacts/operations";
 import {
   selectContacts,
   selectError,
   selectIsLoading,
-} from "./redux/selectors";
+} from "./redux/contacts/selectors";
 
 function App() {
   const dispatch = useDispatch();
