@@ -43,4 +43,5 @@
 .btn:focus {
   transform: scale(1.05);
   background-color: rgb(92, 156, 209);
+  color: aliceblue;
 }

@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.username {
+  font-weight: 700;
+}
+
+.logoutBtn {
+  display: inline-block;
+  text-align: center;
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.15;
+  text-decoration: none;
+  cursor: pointer;
+
+  color: black;
+  border-radius: 4px;
+  border: 1px solid #78909c;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  color: aliceblue;
+  transform: scale(1.05);
+  background-color: rgb(92, 156, 209);
+}

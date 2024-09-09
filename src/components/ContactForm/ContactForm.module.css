@@ -16,6 +16,7 @@
   flex-direction: column;
   text-align: left;
   background-color: #c4edfafa;
+  margin-top: 10px;
 }
 
 .statusWrapper {
@@ -24,7 +25,7 @@
 }
 .submitBtn {
   border: 1px solid rgb(83, 82, 82);
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 5px;
   min-width: 120px;
   border-radius: 5px;
@@ -33,12 +34,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  transition: all 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
 }
 .submitBtn:hover,
 .submitBtn:focus {
-  background-color: rgb(130, 186, 238);
+  background-color: rgb(92, 156, 209);
   transform: scale(1.05);
+  color: aliceblue;
 }
 
 .errorText {

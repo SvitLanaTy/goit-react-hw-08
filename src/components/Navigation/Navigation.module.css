@@ -1,0 +1,17 @@
+.navLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #2a363b;
+}
+
+.active {
+  color: #2f5cf0;
+  pointer-events: none;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: #2f5cf0;
+}
