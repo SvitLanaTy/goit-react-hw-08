@@ -9,6 +9,7 @@ import "modern-normalize";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <BrowserRouter>
           <HelmetProvider>
             <App />
+            <Toaster />
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>

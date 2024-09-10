@@ -32,7 +32,7 @@ const ContactsPage = () => {
       <Section>
         <h2 className={css.title}>Phonebook</h2>
         {isLoading && !error && (
-          <b style={{ color: "green" }}>Request in progress...</b>
+          <b style={{ color: "blue" }}>Request in progress...</b>
         )}
         {error && <ErrorMessage title={error} />}
         <ContactForm />

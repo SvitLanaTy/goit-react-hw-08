@@ -7,10 +7,12 @@ import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
 import toast from "react-hot-toast";
 import ModalEditContact from "../ModalEditContact/ModalEditContact";
 import { useState } from "react";
+import ModalDeleteConfirm from "../ModalDeleteConfirm/ModalDeleteConfirm";
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const onDeleteContact = (contactId) => {
     dispatch(deleteContact(contactId))
@@ -18,6 +20,11 @@ const Contact = ({ id, name, number }) => {
       .then(() => {
         toast.success("The contact was successfully deleted.");
       });
+  };
+
+  const handleDeleteConfirm = () => {
+    onDeleteContact(id);
+    setDeleteModalOpen(false);
   };
 
   return (
@@ -36,7 +43,7 @@ const Contact = ({ id, name, number }) => {
         <button
           type="button"
           className={css.btn}
-          onClick={() => onDeleteContact(id)}
+          onClick={() => setDeleteModalOpen(true)}
         >
           <RiDeleteBinLine size={22} />
         </button>
@@ -45,9 +52,20 @@ const Contact = ({ id, name, number }) => {
           className={css.btn}
           onClick={() => setModalOpen(true)}
         >
-          <RiEdit2Line size={22} /> {/* Edit */}
+          <RiEdit2Line size={22} />
         </button>
       </div>
+
+      {isDeleteModalOpen && (
+        <ModalDeleteConfirm
+          open={isDeleteModalOpen}
+          onClose={() => setDeleteModalOpen(false)}
+          onConfirm={handleDeleteConfirm}
+          contactName={name}
+          contactNumber={number}
+        />
+      )}
+
       {isModalOpen && (
         <ModalEditContact
           id={id}

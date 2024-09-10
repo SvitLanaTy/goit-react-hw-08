@@ -84,10 +84,10 @@ const ModalEditContact = ({ open, onClose, id, name, number }) => {
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      light: "#ff7961",
-      main: "#ba000d",
-      dark: "#f44336",
-      contrastText: "#000",
+      light: "#6ec6ff",
+      main: "#2196f3",
+      dark: "#0069c0",
+      contrastText: "#fff",
     },
     secondary: {
       light: "#90a4ae",

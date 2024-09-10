@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
 
 const numberRegExp = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
 
@@ -28,9 +29,11 @@ const AddContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (formData, formActions) => {
-    console.log(formData);
-
-    dispatch(addContact(formData));
+    dispatch(addContact(formData))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact added successfully🎉");
+      });
     formActions.resetForm();
     formActions.setErrors({});
   };
@@ -58,7 +61,7 @@ const AddContactForm = () => {
             <Field type="tel" name="number" placeholder="xxx-xxx-xxxx" />
             <ErrorMessage
               className={css.errorText}
-              name="name"
+              name="number"
               component="span"
             />
           </label>
