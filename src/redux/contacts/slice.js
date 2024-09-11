@@ -6,6 +6,7 @@ import {
   fetchContacts,
   updateContact,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 const INITIAL_STATE = {
   items: [],
@@ -58,7 +59,12 @@ const contactsSlice = createSlice({
           state.items[index] = action.payload;
         }
       })
-      .addCase(updateContact.rejected, handleRejected);
+      .addCase(updateContact.rejected, handleRejected)
+      .addCase(logout.fulfilled, (state) => {
+        state.items = [];
+        state.isLoading = false;
+        state.error = null;
+      });
   },
 });
 
